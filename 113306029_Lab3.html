@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+<h1>113306029_Lab3_Number Guessing Game</h1>
+<div id="photo"></div>
+<script type="text/javascript">
+	var count = 7;
+	var max = 100;
+	var min = 1;
+	var correctAnswer = Math.floor(Math.random() * 100) + 1;
+	var correct = false;
+	while(count > 0 && correct == false){
+		var input = window.prompt("請輸入" + min + "~" + max + "之間的數字\n還剩下" + count + "次機會");
+		if(input > min && input < max){
+			if(input == correctAnswer){
+				alert("恭喜你答對了");
+				correct = true;
+			}else{
+				alert("答錯了!!!");
+				if(correctAnswer > input){
+					min = input;
+				}else{
+					max = input;
+				}
+			}
+		}else{
+			alert("請輸入有效範圍的數字!(不能選擇範圍的上下限)");
+		}
+		count--;
+	}
+	if(correct === true){
+		const img = document.createElement("img");
+    	img.src = "correct.jpg"; 
+    	img.alt = "正確圖片"; 
+		document.getElementById("photo").appendChild(img);
+	}else{
+		const img = document.createElement("img");
+    	img.src = "wrong.jpg"; 
+    	img.alt = "錯誤圖片"; 
+		document.getElementById("photo").appendChild(img);
+	}
+</script>	
+</body>
+</html>
